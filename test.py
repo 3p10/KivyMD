@@ -5,7 +5,7 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDButton
 from kivy.uix.image import Image
 
-# Define KV string for layout
+# KV string for layout
 kv_string = """
 ScreenManager:
     MainScreen:
@@ -32,9 +32,9 @@ ScreenManager:
             text: ' [b]Exam Information:[/b] \\n' +\
                 ' [u]Course: CT30A2803 User Interfaces and Usability - Monimuoto-opetus 8.1.2024-19.4.2024[/u] \\n' +\
                 ' Exam type: Final Exam \\n Language: English \\n Recommended tools: Paper, pen and camera \\n' +\
-                ' General information about the exam \\n' +\
-                ' Questions in total: 14 \\n Maximum points: 20 \\n 12 right/wrong type questions (12 points/ 75%) \\n' +\
-                ' 2 Text/Essay type questions (8 points/ 25%) \\n' +\
+                ' General information about the exam: \\n' +\
+                '  • Questions in total: 6 \\n  • Maximum points: 20 \\n  • 4 right/wrong type questions (8 points/ 40%) \\n' +\
+                '  • 2 Text/Essay type questions (12 points/ 60%) \\n' +\
                 ' Attempts: 1 \\n Duration: 30 min[/size]'
             halign: 'left'  # Align text to the left
             theme_text_color: 'Primary'
@@ -46,7 +46,6 @@ ScreenManager:
             spacing: dp(8)
             MDCheckbox:
                 id: accept_checkbox
-                # padding: (0, 0)
             MDLabel:
                 text: 'I have read und understood the assignment.'
                 theme_text_color: 'Primary'
@@ -77,11 +76,11 @@ ScreenManager:
             orientation: 'horizontal'
             size_hint_y: None
             height: dp(40)
-            padding: dp(10), dp(5)  # Add padding to the right side of the page
+            padding: dp(10), dp(5)
             MDLabel:
-                text: 'Exam Overview'
-                halign: 'left'  # Align text to the left
-            # Gray box containing "Time: 30:00" text
+                text: 'Question 1 and 2:'
+                halign: 'left'
+            # Box containing "Time: 30:00"
             BoxLayout:
                 size_hint_y: None
                 height: dp(38)
@@ -94,7 +93,7 @@ ScreenManager:
                     halign: 'center'
                     valign: 'middle'
                     size_hint_x: None
-                    width: 150  # Set a fixed width for the box
+                    width: 150
                     canvas.before:
                         Color:
                             rgba: 0.5, 0.5, 0.5, 1
@@ -109,7 +108,6 @@ ScreenManager:
             md_bg_color: 0.7, 0.7, 0.7, 1
             MDLabel:
                 text: "UX design is concerned only with how a product looks, not how it functions?"
-                # height: dp(40)
                 valign: 'center'
             MDBoxLayout:
                 orientation: 'horizontal'
@@ -131,16 +129,16 @@ ScreenManager:
                     id: false_checkbox1
                 MDLabel:
                     text: "False"
-                # White color square with the text "2 points"
+                # Square with the text "2 points"
                 BoxLayout:
                     size_hint_y: None
                     height: dp(68)
-                    padding: dp(250), dp(5)  # Add small margins at the top and bottom
+                    padding: dp(250), dp(5)
                     MDBoxLayout:
                         orientation: 'horizontal'
                         size_hint_x: None
-                        width: dp(100)  # Adjust the width of the box
-                        padding: dp(4), 0  # Add small margins to the left and right
+                        width: dp(100)
+                        padding: dp(4), 0
                         spacing: dp(8)
                         canvas.before:
                             Color:
@@ -153,9 +151,10 @@ ScreenManager:
                             theme_text_color: 'Primary'
                             halign: 'center'
                             valign: 'center'
+        # Space between question boxes
         MDBoxLayout:
             size_hint_y: None
-            height: dp(20)  # Space between boxes
+            height: dp(20)  
         MDBoxLayout:
             orientation: 'vertical'
             size_hint_y: None
@@ -164,7 +163,6 @@ ScreenManager:
             md_bg_color: 0.7, 0.7, 0.7, 1
             MDLabel:
                 text: "A good UX designer prioritizes accessibility to ensure all users, including those with disabilities, can use the product effectively?"
-                # height: dp(40)
                 valign: 'center'
             MDBoxLayout:
                 orientation: 'horizontal'
@@ -186,16 +184,16 @@ ScreenManager:
                     id: false_checkbox2
                 MDLabel:
                     text: "False"
-                # White color square with the text "2 points"
+                # Square with the text "2 points"
                 BoxLayout:
                     size_hint_y: None
                     height: dp(68)
-                    padding: dp(250), dp(5)  # Add small margins at the top and bottom
+                    padding: dp(250), dp(5)
                     MDBoxLayout:
                         orientation: 'horizontal'
                         size_hint_x: None
-                        width: dp(100)  # Adjust the width of the box
-                        padding: dp(4), 0  # Add small margins to the left and right
+                        width: dp(100)
+                        padding: dp(4), 0
                         spacing: dp(8)
                         canvas.before:
                             Color:
@@ -228,24 +226,22 @@ ScreenManager:
                 on_release: root.manager.current = 'third'
                 background_color: (0, 0, 0, 1)
 
-        # Add gray and yellow boxes
+        # Add gray boxes
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
             height: dp(28)
-            padding: dp(10), dp(5), dp(10), dp(5)  # Add padding to the right side of the page
-            spacing: dp(5)  # Add spacing between the boxes
-            # Yellow box
+            padding: dp(10), dp(5), dp(10), dp(5)
+            spacing: dp(5)
             MDLabel:
                 size_hint_x: None
                 width: dp(95)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 0, 1  # Yellow color
+                        rgba: 0.5, 0.5, 0.5, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
-            # Five gray boxes
             MDLabel:
                 size_hint_x: None
                 width: dp(95)
@@ -292,8 +288,6 @@ ScreenManager:
                         size: self.size
                         pos: self.pos
             
-
-
 <ThirdScreen>:
     name: 'third'
     BoxLayout:
@@ -312,11 +306,11 @@ ScreenManager:
             orientation: 'horizontal'
             size_hint_y: None
             height: dp(40)
-            padding: dp(10), dp(5)  # Add padding to the right side of the page
+            padding: dp(10), dp(5)
             MDLabel:
-                text: 'Exam Overview'
-                halign: 'left'  # Align text to the left
-            # Gray box containing "Time: 30:00" text
+                text: 'Question 3 and 4:'
+                halign: 'left'
+            # Box containing "Time: 26:20"
             BoxLayout:
                 size_hint_y: None
                 height: dp(38)
@@ -324,15 +318,247 @@ ScreenManager:
                 spacing: dp(8)
                 padding: dp(250), dp(5)
                 MDLabel:
-                    text: "Time: 04:20"
+                    text: "Time: 26:20"
                     theme_text_color: 'Primary'
                     halign: 'center'
                     valign: 'middle'
                     size_hint_x: None
-                    width: 150  # Set a fixed width for the box
+                    width: 150
                     canvas.before:
                         Color:
-                            rgba: 1, 0, 0, 1
+                            rgba: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(130)
+            padding: dp(13), dp(1)
+            md_bg_color: 0.7, 0.7, 0.7, 1
+            MDLabel:
+                text: "Good UI design focuses solely on making things look visually appealing?"
+                valign: 'center'
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(30)
+                padding: dp(5)
+                spacing: dp(3)
+                MDCheckbox:
+                    id: true_checkbox1
+                MDLabel:
+                    text: "True"
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(30)
+                padding: dp(5)
+                spacing: dp(3)
+                MDCheckbox:
+                    id: false_checkbox1
+                MDLabel:
+                    text: "False"
+                # Square with the text "2 points"
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(68)
+                    padding: dp(250), dp(5)
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_x: None
+                        width: dp(100)
+                        padding: dp(4), 0
+                        spacing: dp(8)
+                        canvas.before:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: "Question 3 \\n2 points"
+                            theme_text_color: 'Primary'
+                            halign: 'center'
+                            valign: 'center'
+        # Space between boxes
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(20)
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(130)
+            padding: dp(13), dp(1)
+            md_bg_color: 0.7, 0.7, 0.7, 1
+            MDLabel:
+                text: "Consistency in UI design helps users predict how elements will behave across an application."
+                valign: 'center'
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(30)
+                padding: dp(5)
+                spacing: dp(3)
+                MDCheckbox:
+                    id: true_checkbox2
+                MDLabel:
+                    text: "True"
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(30)
+                padding: dp(5)
+                spacing: dp(3)
+                MDCheckbox:
+                    id: false_checkbox2
+                MDLabel:
+                    text: "False"
+                # Square with the text "2 points"
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(68)
+                    padding: dp(250), dp(5)
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_x: None
+                        width: dp(100)
+                        padding: dp(4), 0
+                        spacing: dp(8)
+                        canvas.before:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: "Question 4 \\n2 points"
+                            theme_text_color: 'Primary'
+                            halign: 'center'
+                            valign: 'center'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            padding: dp(8)
+            spacing: dp(8)
+            Button:
+                size_hint: None, None
+                size: 200, 50
+                text: 'Previous Question'
+                on_release: root.manager.current = 'second'
+                background_color: (0, 0, 0, 1)
+            Widget:
+            Button:
+                size_hint: None, None
+                size: 200, 50
+                text: 'Next Question'
+                on_release: root.manager.current = 'fourth'
+                background_color: (0, 0, 0, 1)
+
+        # Add gray and green boxes
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(28)
+            padding: dp(10), dp(5), dp(10), dp(5)
+            spacing: dp(5)
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 #Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 #Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                        
+
+
+<FourthScreen>:
+    name: 'fourth'
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Image:
+            source: 'image1.png'
+            size_hint_y: None
+            height: '200dp'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(40)
+            padding: dp(10), dp(5)
+            MDLabel:
+                text: 'Question 5:'
+                halign: 'left'
+            # Box containing "Time: 22:17"
+            BoxLayout:
+                size_hint_y: None
+                height: dp(38)
+                padding: dp(8)
+                spacing: dp(8)
+                padding: dp(250), dp(5)
+                MDLabel:
+                    text: "Time: 22:17"
+                    theme_text_color: 'Primary'
+                    halign: 'center'
+                    valign: 'middle'
+                    size_hint_x: None
+                    width: 150
+                    canvas.before:
+                        Color:
+                            rgba: 0.5, 0.5, 0.5, 1
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -345,12 +571,11 @@ ScreenManager:
             md_bg_color: 0.7, 0.7, 0.7, 1
             MDLabel:
                 text: "Explain the importance of user interface (UI) consistency in enhancing the overall user experience. Provide examples to support your explanation."
-                # height: dp(40)
                 valign: 'center'
             BoxLayout:
                 size_hint_y: None
-                height: dp(200)  # Adjust the height as needed
-                padding: dp(13), dp(5)  # Add padding
+                height: dp(200)
+                padding: dp(13), dp(5)
                 canvas.before:
                     Color:
                         rgba: 1, 1, 1, 1
@@ -374,40 +599,29 @@ ScreenManager:
                 size_hint: None, None
                 size: 200, 50
                 text: 'Previous Question'
-                on_release: root.manager.current = 'second'
+                on_release: root.manager.current = 'third'
                 background_color: (0, 0, 0, 1)
             Widget:
             Button:
                 size_hint: None, None
                 size: 200, 50
                 text: 'Next Question'
-                on_release: root.manager.current = 'fourth'
+                on_release: root.manager.current = 'fifth'
                 background_color: (0, 0, 0, 1)
 
-        # Add gray and yellow boxes
+        # Add gray, greean and yellow boxes
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
             height: dp(28)
-            padding: dp(10), dp(5), dp(10), dp(5)  # Add padding to the right side of the page
-            spacing: dp(5)  # Add spacing between the boxes
-            # Yellow box
+            padding: dp(10), dp(5), dp(10), dp(5)
+            spacing: dp(5)
             MDLabel:
                 size_hint_x: None
                 width: dp(95)
                 canvas.before:
                     Color:
-                        rgba: 0, 1, 0, 1  
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
-            # Five gray boxes
-            MDLabel:
-                size_hint_x: None
-                width: dp(95)
-                canvas.before:
-                    Color:
-                        rgba: 1, 1, 0, 1
+                        rgba: 0, 1, 0, 1  # Green
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -416,7 +630,7 @@ ScreenManager:
                 width: dp(95)
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1
+                        rgba: 0, 1, 0, 1 # Green
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -425,7 +639,16 @@ ScreenManager:
                 width: dp(95)
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1
+                        rgba: 1, 1, 0, 1 # Yellow
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -448,8 +671,8 @@ ScreenManager:
                         size: self.size
                         pos: self.pos
 
-<FourthScreen>:
-    name: 'fourth'
+<FifthScreen>:
+    name: 'fifth'
     BoxLayout:
         orientation: 'vertical'
         canvas.before:
@@ -466,11 +689,162 @@ ScreenManager:
             orientation: 'horizontal'
             size_hint_y: None
             height: dp(40)
-            padding: dp(10), dp(5)  # Add padding to the right side of the page
+            padding: dp(10), dp(5)
+            MDLabel:
+                text: 'Question 6:'
+                halign: 'left'
+            # Box containing "Time: 04:20"
+            BoxLayout:
+                size_hint_y: None
+                height: dp(38)
+                padding: dp(8)
+                spacing: dp(8)
+                padding: dp(250), dp(5)
+                MDLabel:
+                    text: "Time: 04:20"
+                    theme_text_color: 'Primary'
+                    halign: 'center'
+                    valign: 'middle'
+                    size_hint_x: None
+                    width: 150
+                    canvas.before:
+                        Color:
+                            rgba: 1, 0, 0, 1
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(285)
+            padding: dp(13), dp(1)
+            md_bg_color: 0.7, 0.7, 0.7, 1
+            MDLabel:
+                text: "Explain the importance of user interface (UI) consistency in enhancing the overall user experience. Provide examples to support your explanation."
+                valign: 'center'
+            BoxLayout:
+                size_hint_y: None
+                height: dp(200)
+                padding: dp(13), dp(5)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                TextInput:
+                    hint_text: "Type your answer here"
+                    multiline: True
+                    background_color: 1, 1, 1, 1  # White background
+                    foreground_color: 0, 0, 0, 1  # Black text color
+
+                        
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            padding: dp(8)
+            spacing: dp(8)
+            Button:
+                size_hint: None, None
+                size: 200, 50
+                text: 'Previous Question'
+                on_release: root.manager.current = 'fourth'
+                background_color: (0, 0, 0, 1)
+            Widget:
+            Button:
+                size_hint: None, None
+                size: 200, 50
+                text: 'Exam Overview'
+                on_release: root.manager.current = 'sixth'
+                background_color: (0, 0, 0, 1)
+
+        # Add gray, green and yellow boxes
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(28)
+            padding: dp(10), dp(5), dp(10), dp(5)
+            spacing: dp(5)
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1  # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 0, 1 # Yellow
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+<SixthScreen>:
+    name: 'sixth'
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Image:
+            source: 'image1.png'
+            size_hint_y: None
+            height: '200dp'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(40)
+            padding: dp(10), dp(5)
             MDLabel:
                 text: 'Exam Overview'
-                halign: 'left'  # Align text to the left
-            # Gray box containing "Time: 03:00" text
+                halign: 'left'
+            # Box containing "Time: 03:00"
             BoxLayout:
                 size_hint_y: None
                 height: dp(38)
@@ -483,7 +857,7 @@ ScreenManager:
                     halign: 'center'
                     valign: 'middle'
                     size_hint_x: None
-                    width: 150  # Set a fixed width for the box
+                    width: 150
                     canvas.before:
                         Color:
                             rgba: 1, 0, 0, 1
@@ -497,16 +871,16 @@ ScreenManager:
             valign: 'center'
             padding: dp(13), dp(1)
             md_bg_color: 0.7, 0.7, 0.7, 1
-            pos_hint: {'center_x': 0.5}  # Center the box horizontally
-            size_hint_x: None  # Remove automatic width calculation based on children
+            pos_hint: {'center_x': 0.5}
+            size_hint_x: None
             width: dp(200)
             MDLabel:
-                text: "12/14 questions answered"
+                text: "4/6 questions answered"
                 height: dp(40)
                 halign: 'center'
         MDBoxLayout:
             size_hint_y: None
-            height: dp(35)  # Space between boxes                    
+            height: dp(35)
         MDBoxLayout:
             orientation: 'vertical'
             size_hint_y: None
@@ -514,16 +888,16 @@ ScreenManager:
             valign: 'center'
             padding: dp(13), dp(1)
             md_bg_color: 0.7, 0.7, 0.7, 1
-            pos_hint: {'center_x': 0.5}  # Center the box horizontally
+            pos_hint: {'center_x': 0.5}
             size_hint_x: None  # Remove automatic width calculation based on children
             width: dp(400)
             MDLabel:
-                text: "Question 14 Not answered (Essay)"
+                text: "Question 6 Not answered (Essay)"
                 height: dp(40)
                 halign: 'center'
         MDBoxLayout:
             size_hint_y: None
-            height: dp(35)  # Space between boxes
+            height: dp(35)
         MDBoxLayout:
             orientation: 'vertical'
             size_hint_y: None
@@ -531,16 +905,16 @@ ScreenManager:
             valign: 'center'
             padding: dp(13), dp(1)
             md_bg_color: 0.7, 0.7, 0.7, 1
-            pos_hint: {'center_x': 0.5}  # Center the box horizontally
+            pos_hint: {'center_x': 0.5}
             size_hint_x: None  # Remove automatic width calculation based on children
             width: dp(400)
             MDLabel:
-                text: "Question 12 Not answered (True/False)"
+                text: "Question 3 Not answered (True/False)"
                 height: dp(40)
                 halign: 'center'
 
         MDLabel:
-            halign: 'left'  # Align text to the left
+            halign: 'left'
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
@@ -552,7 +926,7 @@ ScreenManager:
                 size: 200, 50
                 pos_hint: {'left': 1, 'bottom': 1}
                 text: 'Previous Question'
-                on_release: root.manager.current = 'third'
+                on_release: root.manager.current = 'fifth'
                 background_color: (0, 0, 0, 1)
             Widget:
             Button:
@@ -560,9 +934,69 @@ ScreenManager:
                 size: 200, 50
                 text: 'Return Exam'
                 background_color: (0, 0, 0, 1)
+        # Add gray, green and yellow boxes
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(28)
+            padding: dp(10), dp(5), dp(10), dp(5)
+            spacing: dp(5)
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 0, 1 # Yellow
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(95)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 0, 1, 0, 1 # Green
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                size_hint_x: None
+                width: dp(190)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 0, 1 # Yellow
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
 
 """
-
 
 # Define screens
 class MainScreen(Screen):
@@ -575,6 +1009,12 @@ class ThirdScreen(Screen):
     pass
 
 class FourthScreen(Screen):
+    pass
+
+class FifthScreen(Screen):
+    pass
+
+class SixthScreen(Screen):
     pass
 
 # Define the app
@@ -592,6 +1032,8 @@ class SimpleWebsiteApp(MDApp):
         sm.add_widget(SecondScreen())
         sm.add_widget(ThirdScreen())
         sm.add_widget(FourthScreen())
+        sm.add_widget(FifthScreen())
+        sm.add_widget(SixthScreen())
         
         return sm
 
